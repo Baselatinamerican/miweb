@@ -1,215 +1,137 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>faryno.com.ar</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-:root{
-  --bg:#05070f;
-  --fg:#e9ecff;
-  --a:#6cf2c2;
-  --b:#7aa2ff;
-}
-
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
-
-body{
-  background:radial-gradient(circle at 50% 50%, #0c1538, #05070f 60%);
-  color:var(--fg);
-  height:100vh;
-  overflow:hidden;
-  cursor:none;
-}
-
-/* ===== Custom cursor ===== */
-.cursor{
-  position:fixed;
-  width:14px;height:14px;
-  border-radius:50%;
-  background:linear-gradient(135deg,var(--a),var(--b));
-  pointer-events:none;
-  mix-blend-mode:screen;
-  box-shadow:0 0 20px var(--a);
-  transform:translate(-50%,-50%);
-  z-index:9999;
-}
-
-/* ===== Canvas ===== */
-canvas{
-  position:fixed;
-  inset:0;
-  z-index:0;
-}
-
-/* ===== Content ===== */
-main{
-  position:relative;
-  z-index:1;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.card{
-  padding:3rem;
-  max-width:900px;
-  backdrop-filter:blur(18px);
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.15);
-  border-radius:24px;
-  box-shadow:0 40px 120px rgba(0,0,0,.7);
-  animation:float 6s ease-in-out infinite;
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
-}
-
-h1{
-  font-size:clamp(2.5rem,5vw,4rem);
-  background:linear-gradient(90deg,var(--a),var(--b));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  position:relative;
-}
-
-h1::after{
-  content:attr(data-text);
-  position:absolute;
-  left:2px;top:0;
-  opacity:.4;
-  filter:blur(2px);
-}
-
-p{
-  margin-top:1.2rem;
-  line-height:1.6;
-  max-width:60ch;
-  opacity:.9;
-}
-
-.buttons{
-  margin-top:2rem;
-  display:flex;
-  gap:1rem;
-}
-
-button{
-  padding:.9rem 1.4rem;
-  border:none;
-  border-radius:14px;
-  background:linear-gradient(135deg,var(--a),var(--b));
-  color:#05070f;
-  font-weight:600;
-  cursor:pointer;
-  box-shadow:0 10px 30px rgba(0,0,0,.5);
-}
-
-button:hover{
-  transform:translateY(-2px);
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Guerra contra el transa - Wikipedia, la enciclopedia libre</title>
+  <style>
+    body { font-family: "Helvetica Neue", Arial, sans-serif; background:#fff; color:#202122; margin:0; }
+    #content { max-width: 980px; margin: 18px auto; padding: 18px; }
+    h1 { font-size:28px; border-bottom:1px solid #a2a9b1; padding-bottom:6px; }
+    h2 { font-size:18px; border-bottom:1px solid #e5e5e5; margin-top:26px; padding-bottom:6px; }
+    p { line-height:1.6; margin:0 0 12px 0; }
+    .infobox { float:right; width:300px; margin:0 0 12px 18px; border:1px solid #a2a9b1; background:#f8f9fa; font-size:90%; }
+    .infobox caption { font-weight:bold; background:#e9eef8; padding:8px; text-align:center; }
+    .infobox td { padding:6px 8px; vertical-align:top; }
+    .toc { border:1px solid #a2a9b1; background:#f8f9fa; padding:10px; width:320px; font-size:95%; }
+    .toc ul { list-style:none; padding-left:0; margin:6px 0 0 0; }
+    .toc li { margin:6px 0; }
+    ul { margin-left:20px; }
+    .timeline { font-family:monospace; background:#fff; border:1px solid #e0e0e0; padding:8px; }
+    .small { font-size:90%; color:#54595d; }
+    .clear { clear:both; }
+  </style>
 </head>
 
 <body>
+<div id="content">
 
-<div class="cursor"></div>
-<canvas id="fx"></canvas>
+<h1>Guerra contra el transa</h1>
 
-<main>
-  <section class="card">
-    <h1 data-text="faryno.com.ar">faryno.com.ar</h1>
-    <p>
-      Dominio propio.  
-      GitHub Pages.  
-      Mouse tracking.  
-      Partículas vivas.  
-      Esto no es una landing, es una advertencia.
-    </p>
+<table class="infobox">
+  <caption>Guerra contra el transa</caption>
+  <tbody>
+    <tr><td><b>Fecha</b></td><td>2027–2028</td></tr>
+    <tr><td><b>Lugar</b></td><td>Buenos Aires, Argentina</td></tr>
+    <tr><td><b>Causa</b></td><td>Expansión territorial y económica de redes informales</td></tr>
+    <tr><td><b>Resultado</b></td><td>Freno parcial a la expansión y colapso logístico</td></tr>
+    <tr><td><b>Bandos</b></td><td>Resistencias barriales vs. red del transa</td></tr>
+    <tr><td><b>Evento clave</b></td><td>Batalla de Buenos Aires (2028)</td></tr>
+  </tbody>
+</table>
 
-    <div class="buttons">
-      <button onclick="explode()">Desatar caos</button>
-      <button onclick="invert()">Invertir realidad</button>
-    </div>
-  </section>
-</main>
+<p>
+La <strong>Guerra contra el transa</strong> fue un conflicto urbano no convencional ocurrido en la ciudad
+de Buenos Aires entre 2027 y 2028, originado por la expansión acelerada de una red informal de control
+territorial, distribución y comercio conocida popularmente como <em>el imperio del transa</em>.
+</p>
 
-<script>
-/* ===== Cursor ===== */
-const cursor=document.querySelector('.cursor');
-window.addEventListener('mousemove',e=>{
-  cursor.style.left=e.clientX+'px';
-  cursor.style.top=e.clientY+'px';
-});
+<p>
+El conflicto culminó con la <strong>Batalla de Buenos Aires de 2028</strong>, una serie de enfrentamientos,
+sabotajes y acciones coordinadas que lograron frenar el crecimiento de dicha red en zonas estratégicas
+de la ciudad.
+</p>
 
-/* ===== Canvas particles ===== */
-const canvas=document.getElementById('fx');
-const ctx=canvas.getContext('2d');
-let w,h;
-function resize(){
-  w=canvas.width=window.innerWidth;
-  h=canvas.height=window.innerHeight;
-}
-resize();
-window.addEventListener('resize',resize);
+<div class="toc">
+<strong>Contenido</strong>
+<ul>
+  <li>1 Antecedentes</li>
+  <li>2 Expansión del imperio del transa</li>
+  <li>3 Batalla de Buenos Aires (2028)</li>
+  <li>4 Cronología</li>
+  <li>5 Actores relevantes</li>
+  <li>6 Consecuencias</li>
+  <li>7 Interpretaciones y legado</li>
+</ul>
+</div>
 
-let mouse={x:w/2,y:h/2};
-window.addEventListener('mousemove',e=>{
-  mouse.x=e.clientX;
-  mouse.y=e.clientY;
-});
+<h2>Antecedentes</h2>
+<p>
+Durante la segunda mitad de la década de 2020, diversas zonas urbanas de Buenos Aires
+experimentaron una consolidación de economías informales ligadas a redes de distribución
+paralela. Estas redes comenzaron a reemplazar estructuras comerciales tradicionales,
+generando dependencia económica y control territorial.
+</p>
 
-let particles=[];
-for(let i=0;i<140;i++){
-  particles.push({
-    x:Math.random()*w,
-    y:Math.random()*h,
-    vx:(Math.random()-.5)*.6,
-    vy:(Math.random()-.5)*.6
-  });
-}
+<h2>Expansión del imperio del transa</h2>
+<p>
+El denominado <strong>transa</strong> emergió como figura central de esta expansión, articulando
+una red de kioscos, depósitos y puntos de venta que operaban con logística propia,
+seguridad privada y mecanismos de presión sobre comerciantes barriales.
+</p>
 
-function loop(){
-  ctx.clearRect(0,0,w,h);
-  for(let p of particles){
-    let dx=mouse.x-p.x;
-    let dy=mouse.y-p.y;
-    let d=Math.hypot(dx,dy);
-    if(d<180){
-      p.vx+=dx*0.00005;
-      p.vy+=dy*0.00005;
-    }
-    p.x+=p.vx;
-    p.y+=p.vy;
+<p>
+Para 2027, la red había alcanzado un nivel de organización que motivó la formación
+de resistencias barriales y alianzas informales destinadas a frenar su crecimiento.
+</p>
 
-    if(p.x<0||p.x>w)p.vx*=-1;
-    if(p.y<0||p.y>h)p.vy*=-1;
+<h2>Batalla de Buenos Aires (2028)</h2>
+<p>
+En marzo de 2028, el conflicto escaló a una serie de acciones coordinadas que hoy se conocen
+como la Batalla de Buenos Aires. Estas incluyeron bloqueos de distribución, sabotajes a
+infraestructura logística y enfrentamientos directos en puntos clave de la ciudad.
+</p>
 
-    ctx.fillStyle='rgba(120,180,255,.7)';
-    ctx.fillRect(p.x,p.y,1.6,1.6);
-  }
-  requestAnimationFrame(loop);
-}
-loop();
+<p>
+Diversos actores participaron en estas acciones, entre ellos individuos identificados
+por apellidos o apodos, como <strong>Mateo Faryno</strong>, quien operó junto a células barriales
+en tareas de sabotaje y coordinación durante los momentos más críticos del conflicto.
+</p>
 
-/* ===== Buttons ===== */
-function explode(){
-  particles.forEach(p=>{
-    p.vx+=(Math.random()-.5)*6;
-    p.vy+=(Math.random()-.5)*6;
-  });
-}
+<h2>Cronología</h2>
+<div class="timeline">
+  <div><b>Febrero de 2028</b> — Aumento de ataques a depósitos y rutas de distribución.</div>
+  <div><b>10 de marzo de 2028</b> — Bloqueos simultáneos en centros logísticos.</div>
+  <div><b>18 de marzo de 2028</b> — Enfrentamientos nocturnos en el sur de la ciudad.</div>
+  <div><b>22 de marzo de 2028</b> — Colapso parcial de la red del transa y retirada operativa.</div>
+</div>
 
-let inv=false;
-function invert(){
-  inv=!inv;
-  document.body.style.filter=inv?'invert(1) hue-rotate(180deg)':'none';
-}
-</script>
+<h2>Actores relevantes</h2>
+<ul>
+  <li><b>El transa:</b> líder informal de la red comercial y logística.</li>
+  <li><b>Resistencias barriales:</b> grupos descentralizados de vecinos y operadores urbanos.</li>
+  <li><b>Mateo Faryno:</b> participante identificado en operaciones de sabotaje y coordinación.</li>
+</ul>
 
+<h2>Consecuencias</h2>
+<p>
+Tras la batalla, la expansión territorial del imperio del transa se vio seriamente limitada.
+Si bien la red no fue completamente desmantelada, perdió cohesión logística y control
+en múltiples barrios estratégicos.
+</p>
+
+<h2>Interpretaciones y legado</h2>
+<p>
+La Guerra contra el transa es interpretada por algunos analistas como un ejemplo de conflicto
+urbano descentralizado, donde actores no institucionales lograron frenar estructuras de poder
+económico informal mediante coordinación local.
+</p>
+
+<p class="small">
+Este artículo forma parte de una documentación ficticia de eventos urbanos contemporáneos.
+</p>
+
+<div class="clear"></div>
+
+</div>
 </body>
 </html>
