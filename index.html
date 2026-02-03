@@ -1,11 +1,182 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Mi página</title>
+  <meta charset="UTF-8" />
+  <title>faryno.com.ar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --fg: #e8ebff;
+      --accent: #6cf2c2;
+      --accent2: #7aa2ff;
+      --glass: rgba(255,255,255,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(1000px 600px at 10% 10%, #14204a 0%, transparent 60%),
+        radial-gradient(800px 500px at 90% 80%, #0f5f4a 0%, transparent 55%),
+        var(--bg);
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card {
+      width: min(900px, 92%);
+      padding: 3rem;
+      border-radius: 24px;
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.12),
+        rgba(255,255,255,0.03)
+      );
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow:
+        0 40px 120px rgba(0,0,0,.6),
+        inset 0 1px 0 rgba(255,255,255,.2);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0) }
+      50% { transform: translateY(-10px) }
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      max-width: 60ch;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      padding: 0.9rem 1.4rem;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 10px 30px rgba(0,0,0,.4);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    button.secondary {
+      background: transparent;
+      color: var(--fg);
+      border: 1px solid rgba(255,255,255,.25);
+      box-shadow: none;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.5);
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+
+    .orbs span {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.4;
+      animation: drift 20s linear infinite;
+    }
+
+    .orbs span:nth-child(1) {
+      width: 300px; height: 300px;
+      background: #6cf2c2;
+      top: -100px; left: -100px;
+    }
+
+    .orbs span:nth-child(2) {
+      width: 240px; height: 240px;
+      background: #7aa2ff;
+      bottom: -120px; right: -80px;
+      animation-duration: 26s;
+    }
+
+    @keyframes drift {
+      from { transform: rotate(0deg) translateX(30px) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Hola 👋</h1>
-  <p>Esta es mi primera página web.</p>
+  <div class="orbs">
+    <span></span>
+    <span></span>
+  </div>
+
+  <main class="card">
+    <h1>faryno.com.ar</h1>
+    <p>
+      Página de prueba.  
+      Dominio propio.  
+      GitHub Pages abajo del capó.  
+      Estética ilegalmente limpia.
+    </p>
+
+    <div class="buttons">
+      <button onclick="alert('🚀 Funciona todo')">
+        Probar magia
+      </button>
+      <button class="secondary" onclick="toggleMode()">
+        Modo secreto
+      </button>
+    </div>
+
+    <footer>
+      © 2026 · hecho con HTML puro y cero miedo
+    </footer>
+  </main>
+
+  <script>
+    let dark = true;
+    function toggleMode() {
+      dark = !dark;
+      document.documentElement.style.setProperty(
+        '--bg', dark ? '#0b0f1a' : '#f4f6ff'
+      );
+      document.documentElement.style.setProperty(
+        '--fg', dark ? '#e8ebff' : '#0b0f1a'
+      );
+    }
+  </script>
 </body>
 </html>
