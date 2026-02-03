@@ -1,182 +1,215 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>faryno.com.ar</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>faryno.com.ar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root {
-      --bg: #0b0f1a;
-      --fg: #e8ebff;
-      --accent: #6cf2c2;
-      --accent2: #7aa2ff;
-      --glass: rgba(255,255,255,0.08);
-    }
+<style>
+:root{
+  --bg:#05070f;
+  --fg:#e9ecff;
+  --a:#6cf2c2;
+  --b:#7aa2ff;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
 
-    body {
-      min-height: 100vh;
-      background:
-        radial-gradient(1000px 600px at 10% 10%, #14204a 0%, transparent 60%),
-        radial-gradient(800px 500px at 90% 80%, #0f5f4a 0%, transparent 55%),
-        var(--bg);
-      color: var(--fg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
+body{
+  background:radial-gradient(circle at 50% 50%, #0c1538, #05070f 60%);
+  color:var(--fg);
+  height:100vh;
+  overflow:hidden;
+  cursor:none;
+}
 
-    .card {
-      width: min(900px, 92%);
-      padding: 3rem;
-      border-radius: 24px;
-      background: linear-gradient(
-        180deg,
-        rgba(255,255,255,0.12),
-        rgba(255,255,255,0.03)
-      );
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow:
-        0 40px 120px rgba(0,0,0,.6),
-        inset 0 1px 0 rgba(255,255,255,.2);
-      animation: float 6s ease-in-out infinite;
-    }
+/* ===== Custom cursor ===== */
+.cursor{
+  position:fixed;
+  width:14px;height:14px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--a),var(--b));
+  pointer-events:none;
+  mix-blend-mode:screen;
+  box-shadow:0 0 20px var(--a);
+  transform:translate(-50%,-50%);
+  z-index:9999;
+}
 
-    @keyframes float {
-      0%,100% { transform: translateY(0) }
-      50% { transform: translateY(-10px) }
-    }
+/* ===== Canvas ===== */
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
+}
 
-    h1 {
-      font-size: clamp(2.2rem, 4vw, 3.5rem);
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+/* ===== Content ===== */
+main{
+  position:relative;
+  z-index:1;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 
-    p {
-      max-width: 60ch;
-      font-size: 1.05rem;
-      line-height: 1.6;
-      opacity: 0.9;
-      margin-bottom: 2rem;
-    }
+.card{
+  padding:3rem;
+  max-width:900px;
+  backdrop-filter:blur(18px);
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:24px;
+  box-shadow:0 40px 120px rgba(0,0,0,.7);
+  animation:float 6s ease-in-out infinite;
+}
 
-    .buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
 
-    button {
-      cursor: pointer;
-      border: none;
-      padding: 0.9rem 1.4rem;
-      border-radius: 14px;
-      font-size: 0.95rem;
-      color: var(--bg);
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 10px 30px rgba(0,0,0,.4);
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
+h1{
+  font-size:clamp(2.5rem,5vw,4rem);
+  background:linear-gradient(90deg,var(--a),var(--b));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  position:relative;
+}
 
-    button.secondary {
-      background: transparent;
-      color: var(--fg);
-      border: 1px solid rgba(255,255,255,.25);
-      box-shadow: none;
-    }
+h1::after{
+  content:attr(data-text);
+  position:absolute;
+  left:2px;top:0;
+  opacity:.4;
+  filter:blur(2px);
+}
 
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 40px rgba(0,0,0,.5);
-    }
+p{
+  margin-top:1.2rem;
+  line-height:1.6;
+  max-width:60ch;
+  opacity:.9;
+}
 
-    footer {
-      margin-top: 3rem;
-      font-size: 0.8rem;
-      opacity: 0.5;
-    }
+.buttons{
+  margin-top:2rem;
+  display:flex;
+  gap:1rem;
+}
 
-    .orbs span {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.4;
-      animation: drift 20s linear infinite;
-    }
+button{
+  padding:.9rem 1.4rem;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--a),var(--b));
+  color:#05070f;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
 
-    .orbs span:nth-child(1) {
-      width: 300px; height: 300px;
-      background: #6cf2c2;
-      top: -100px; left: -100px;
-    }
-
-    .orbs span:nth-child(2) {
-      width: 240px; height: 240px;
-      background: #7aa2ff;
-      bottom: -120px; right: -80px;
-      animation-duration: 26s;
-    }
-
-    @keyframes drift {
-      from { transform: rotate(0deg) translateX(30px) rotate(0deg); }
-      to   { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
-    }
-  </style>
+button:hover{
+  transform:translateY(-2px);
+}
+</style>
 </head>
 
 <body>
-  <div class="orbs">
-    <span></span>
-    <span></span>
-  </div>
 
-  <main class="card">
-    <h1>faryno.com.ar</h1>
+<div class="cursor"></div>
+<canvas id="fx"></canvas>
+
+<main>
+  <section class="card">
+    <h1 data-text="faryno.com.ar">faryno.com.ar</h1>
     <p>
-      Página de prueba.  
       Dominio propio.  
-      GitHub Pages abajo del capó.  
-      Estética ilegalmente limpia.
+      GitHub Pages.  
+      Mouse tracking.  
+      Partículas vivas.  
+      Esto no es una landing, es una advertencia.
     </p>
 
     <div class="buttons">
-      <button onclick="alert('🚀 Funciona todo')">
-        Probar magia
-      </button>
-      <button class="secondary" onclick="toggleMode()">
-        Modo secreto
-      </button>
+      <button onclick="explode()">Desatar caos</button>
+      <button onclick="invert()">Invertir realidad</button>
     </div>
+  </section>
+</main>
 
-    <footer>
-      © 2026 · hecho con HTML puro y cero miedo
-    </footer>
-  </main>
+<script>
+/* ===== Cursor ===== */
+const cursor=document.querySelector('.cursor');
+window.addEventListener('mousemove',e=>{
+  cursor.style.left=e.clientX+'px';
+  cursor.style.top=e.clientY+'px';
+});
 
-  <script>
-    let dark = true;
-    function toggleMode() {
-      dark = !dark;
-      document.documentElement.style.setProperty(
-        '--bg', dark ? '#0b0f1a' : '#f4f6ff'
-      );
-      document.documentElement.style.setProperty(
-        '--fg', dark ? '#e8ebff' : '#0b0f1a'
-      );
+/* ===== Canvas particles ===== */
+const canvas=document.getElementById('fx');
+const ctx=canvas.getContext('2d');
+let w,h;
+function resize(){
+  w=canvas.width=window.innerWidth;
+  h=canvas.height=window.innerHeight;
+}
+resize();
+window.addEventListener('resize',resize);
+
+let mouse={x:w/2,y:h/2};
+window.addEventListener('mousemove',e=>{
+  mouse.x=e.clientX;
+  mouse.y=e.clientY;
+});
+
+let particles=[];
+for(let i=0;i<140;i++){
+  particles.push({
+    x:Math.random()*w,
+    y:Math.random()*h,
+    vx:(Math.random()-.5)*.6,
+    vy:(Math.random()-.5)*.6
+  });
+}
+
+function loop(){
+  ctx.clearRect(0,0,w,h);
+  for(let p of particles){
+    let dx=mouse.x-p.x;
+    let dy=mouse.y-p.y;
+    let d=Math.hypot(dx,dy);
+    if(d<180){
+      p.vx+=dx*0.00005;
+      p.vy+=dy*0.00005;
     }
-  </script>
+    p.x+=p.vx;
+    p.y+=p.vy;
+
+    if(p.x<0||p.x>w)p.vx*=-1;
+    if(p.y<0||p.y>h)p.vy*=-1;
+
+    ctx.fillStyle='rgba(120,180,255,.7)';
+    ctx.fillRect(p.x,p.y,1.6,1.6);
+  }
+  requestAnimationFrame(loop);
+}
+loop();
+
+/* ===== Buttons ===== */
+function explode(){
+  particles.forEach(p=>{
+    p.vx+=(Math.random()-.5)*6;
+    p.vy+=(Math.random()-.5)*6;
+  });
+}
+
+let inv=false;
+function invert(){
+  inv=!inv;
+  document.body.style.filter=inv?'invert(1) hue-rotate(180deg)':'none';
+}
+</script>
+
 </body>
 </html>
