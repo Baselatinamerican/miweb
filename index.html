@@ -2,16 +2,32 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Guerra contra Salva - Wikipedia, la enciclopedia libre</title>
   <style>
+    /* Layout básico */
     body { font-family: Arial, Helvetica, sans-serif; background:#fff; color:#202122; margin:0; }
     #content { max-width: 980px; margin: 18px auto; padding: 18px; }
     h1 { font-size:28px; border-bottom:1px solid #a2a9b1; padding-bottom:6px; }
     h2 { font-size:18px; border-bottom:1px solid #e5e5e5; margin-top:26px; padding-bottom:6px; }
     p { line-height:1.6; margin:0 0 12px 0; }
+
+    /* Infobox */
     .infobox { float:right; width:300px; margin:0 0 12px 18px; border:1px solid #a2a9b1; background:#f8f9fa; font-size:90%; }
     .infobox caption { font-weight:bold; background:#e9eef8; padding:8px; text-align:center; }
     .infobox td { padding:6px 8px; vertical-align:top; }
+
+    /* Imagen dentro de la infobox */
+    .infobox img { display:block; max-width:100%; height:auto; margin:0 auto; }
+    /* Clase opcional para forzar aspecto vertical 9:16 y recortar (usa object-fit) */
+    .vertical-9x16 {
+      max-width: 280px;        /* tamaño dentro de la caja */
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      display:block;
+    }
+
     .toc { border:1px solid #a2a9b1; background:#f8f9fa; padding:10px; width:320px; font-size:95%; }
     .toc ul { list-style:none; padding-left:0; margin:6px 0 0 0; }
     .toc li { margin:6px 0; }
@@ -19,6 +35,12 @@
     .timeline { font-family:monospace; background:#fff; border:1px solid #e0e0e0; padding:8px; }
     .small { font-size:90%; color:#54595d; }
     .clear { clear:both; }
+
+    /* Mejor comportamiento para pantallas pequeñas */
+    @media (max-width:760px) {
+      .infobox { float:none; width:100%; margin: 0 0 12px 0; }
+      .toc { width:100%; }
+    }
   </style>
 </head>
 
@@ -27,9 +49,20 @@
 
 <h1>Guerra contra Salva</h1>
 
-<table class="infobox">
+<table class="infobox" role="table" aria-label="Ficha informativa sobre la Guerra contra Salva">
   <caption>Guerra contra Salva</caption>
   <tbody>
+    <tr>
+      <!-- imagen: usa la URL "raw" de GitHub; si preferís GitHub Pages cambiá la src -->
+      <td colspan="2" style="text-align:center; padding:8px;">
+        <img
+          class="vertical-9x16"
+          src="https://raw.githubusercontent.com/Baselatinamerican/miweb/main/battle_of_buenos_aires.png"
+          alt="Fotografía de la Batalla de Buenos Aires (2028): toma vertical 9:16, borrosa y casual, con humo, luces y militantes en la calle."
+          />
+      </td>
+    </tr>
+
     <tr><td><b>Fecha</b></td><td>2027–2028</td></tr>
     <tr><td><b>Lugar</b></td><td>Buenos Aires, Argentina</td></tr>
     <tr><td><b>Causa</b></td><td>Expansión corporativa de kioscos y control territorial</td></tr>
@@ -51,7 +84,7 @@ coordinadas que lograron frenar el crecimiento del denominado <em>imperio de Sal
 y desarticular su control territorial en múltiples barrios.
 </p>
 
-<div class="toc">
+<div class="toc" role="navigation" aria-label="Tabla de contenidos">
 <strong>Contenido</strong>
 <ul>
   <li>1 Antecedentes</li>
@@ -133,7 +166,7 @@ mediante coordinación local, sabotaje logístico y control territorial comunita
 </p>
 
 <p class="small">
-Artículo ficticio. Parte de un proyecto de lore urbano.
+Artículo con copyright. Parte de un proyecto de recopilacion historica.
 </p>
 
 <div class="clear"></div>
